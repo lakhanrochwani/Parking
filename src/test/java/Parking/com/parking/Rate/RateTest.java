@@ -30,11 +30,20 @@ public class RateTest {
     public void addCar_Test(){
         List<CarDetails> car_list = new ArrayList<>();
         CarDetails cd = new CarDetails(4,8, "ABC");
-        rc.addCar();
-        List<CarDetails> actual = rc.getCar();
+        rc.addCar(4, 8, "ABC");
+        List<CarDetails> expected = rc.getCar();
 
-        CarDetails expected = new CarDetails(4,8, "ABC");
+        CarDetails actual = new CarDetails(4,8, "ABC");
 
-        assertEquals(actual[0], expected);
+        assertEquals(expected.get(0), actual);
+    }
+
+    @Test
+    public void parkingFee_Test(){
+        List<CarDetails> car_list = new ArrayList<>();
+        double expected = rc.parkingFee(4,8);
+        double actual = 20.0;
+
+        assertEquals(expected, actual,0.1);
     }
 }
